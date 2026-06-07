@@ -1,0 +1,9 @@
+# Configuração do banco
+classes/Database.php
+
+# Editor
+.vscode/
+
+# Sistema
+.DS_Store
+Thumbs.db

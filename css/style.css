@@ -1,0 +1,486 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --bg:          #0a0e0a;
+    --bg-2:        #0f1410;
+    --surface:     #141a14;
+    --surface-2:   #1a221a;
+    --surface-3:   #202a20;
+    --border:      #1e281e;
+    --border-2:    #263026;
+
+    --green-dark:  #0d4a1a;
+    --green-mid:   #166b27;
+    --green:       #22c55e;
+    --green-dim:   #16a34a;
+    --green-pale:  rgba(34,197,94,0.08);
+
+    --gold:        #d4a843;
+    --gold-light:  #e8c068;
+    --gold-pale:   rgba(212,168,67,0.1);
+
+    --text:        #e8ede8;
+    --text-muted:  #7a8f7a;
+    --text-dim:    #556055;
+
+    --up:          #22c55e;
+    --down:        #ef4444;
+    --up-bg:       rgba(34,197,94,0.1);
+    --down-bg:     rgba(239,68,68,0.1);
+
+    --radius:      10px;
+    --radius-sm:   7px;
+    --radius-xs:   5px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── Header ─────────────────────────────────────────── */
+header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border-2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header nav {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 58px;
+    gap: 1rem;
+}
+
+.nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-brand::before {
+    content: '▲';
+    font-size: 0.65rem;
+    color: var(--green);
+}
+
+header nav .menu {
+    list-style: none;
+    display: flex;
+    gap: 0.1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex: 1;
+    padding: 0 1rem;
+}
+
+header nav .menu li a {
+    text-decoration: none;
+    color: var(--text-muted);
+    padding: 0.38rem 0.85rem;
+    border-radius: var(--radius-xs);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    transition: background 0.15s, color 0.15s;
+    display: block;
+}
+
+header nav .menu li a:hover {
+    background: var(--surface-3);
+    color: var(--text);
+}
+
+header nav .menu li a.active {
+    color: var(--green);
+    background: var(--green-pale);
+}
+
+.nav-logout a {
+    text-decoration: none;
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.38rem 0.9rem;
+    border-radius: var(--radius-xs);
+    border: 1px solid var(--border-2);
+    transition: border-color 0.15s, color 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.nav-logout a:hover {
+    border-color: var(--down);
+    color: var(--down);
+}
+
+/* ── Main ───────────────────────────────────────────── */
+main {
+    max-width: 1280px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    flex: 1;
+}
+
+/* ── Page header ────────────────────────────────────── */
+.page-header {
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.page-header h1 { margin-bottom: 0.2rem; }
+.page-header p  { margin: 0; }
+
+/* ── Headings ───────────────────────────────────────── */
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: var(--text);
+    letter-spacing: -0.2px;
+    margin-bottom: 1.25rem;
+    line-height: 1.25;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+p {
+    line-height: 1.65;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+/* ── Cards ──────────────────────────────────────────── */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border-2);
+    padding: 1.5rem 1.75rem;
+    border-radius: var(--radius);
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+}
+
+.card:hover {
+    border-color: var(--green-mid);
+    transform: translateY(-1px);
+}
+
+.card h2 {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.card p {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--green);
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+    letter-spacing: -0.5px;
+}
+
+/* ── Tables ─────────────────────────────────────────── */
+.table-wrap {
+    border-radius: var(--radius);
+    border: 1px solid var(--border-2);
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+}
+
+th {
+    background: var(--bg-2);
+    padding: 0.75rem 1.1rem;
+    text-align: left;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid var(--border-2);
+}
+
+td {
+    padding: 0.8rem 1.1rem;
+    color: var(--text);
+    font-size: 0.875rem;
+    border-bottom: 1px solid var(--border);
+    font-variant-numeric: tabular-nums;
+}
+
+tr:last-child td { border-bottom: none; }
+
+tr:hover td { background: var(--surface-2); }
+
+/* ── Forms ──────────────────────────────────────────── */
+form {
+    max-width: 440px;
+    background: var(--surface);
+    border: 1px solid var(--border-2);
+    padding: 2.25rem 2rem;
+    border-radius: 14px;
+    margin: 0 auto;
+}
+
+form label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"],
+form input[type="date"] {
+    width: 100%;
+    padding: 0.65rem 0.95rem;
+    background: var(--bg);
+    border: 1px solid var(--border-2);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    margin-bottom: 1.1rem;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+form input:focus {
+    border-color: var(--green-dim);
+    box-shadow: 0 0 0 3px rgba(34,197,94,0.1);
+}
+
+form > button[type="submit"] {
+    width: 100%;
+    padding: 0.72rem;
+    background: var(--green-dim);
+    border: none;
+    border-radius: var(--radius-sm);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    margin-top: 0.5rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+form > button[type="submit"]:hover  { background: var(--green-mid); }
+form > button[type="submit"]:active { transform: scale(0.99); }
+
+form h1 {
+    text-align: center;
+    margin-bottom: 0.3rem;
+}
+
+/* ── Auth ───────────────────────────────────────────── */
+.auth-page {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    background: var(--bg);
+}
+
+.auth-page form .form-subtitle {
+    text-align: center;
+    font-size: 0.825rem;
+    color: var(--text-muted);
+    margin-bottom: 1.75rem;
+}
+
+.auth-alt {
+    max-width: 440px;
+    width: 100%;
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.auth-alt::before,
+.auth-alt::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-2);
+}
+
+.auth-alt a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 0.42rem 1rem;
+    border: 1px solid var(--border-2);
+    border-radius: 99px;
+    letter-spacing: 0.02em;
+    transition: border-color 0.15s, color 0.15s;
+}
+
+.auth-alt a:hover {
+    border-color: var(--green-dim);
+    color: var(--green);
+}
+
+/* ── Table action buttons ───────────────────────────── */
+button[name="excluir"] {
+    background: transparent;
+    border: 1px solid rgba(239,68,68,0.3);
+    color: var(--down);
+    padding: 0.28rem 0.65rem;
+    border-radius: var(--radius-xs);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.02em;
+    transition: background 0.15s;
+}
+
+button[name="excluir"]:hover { background: var(--down-bg); }
+
+td button[type="submit"]:not([name="excluir"]),
+form[style*="display:inline"] button[type="submit"]:not([name="excluir"]) {
+    background: transparent !important;
+    border: 1px solid var(--border-2) !important;
+    color: var(--text-muted) !important;
+    padding: 0.28rem 0.65rem;
+    border-radius: var(--radius-xs);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.02em;
+    transition: border-color 0.15s, color 0.15s;
+    width: auto !important;
+    margin-top: 0 !important;
+    box-shadow: none !important;
+}
+
+td button[type="submit"]:not([name="excluir"]):hover,
+form[style*="display:inline"] button[type="submit"]:not([name="excluir"]):hover {
+    border-color: var(--green-dim) !important;
+    color: var(--green) !important;
+    background: var(--green-pale) !important;
+}
+
+/* ── Alerts ─────────────────────────────────────────── */
+.erro, p[style*="color:red"] {
+    background: var(--down-bg);
+    border: 1px solid rgba(239,68,68,0.25);
+    border-radius: var(--radius-sm);
+    color: var(--down) !important;
+    font-size: 0.825rem;
+    padding: 0.65rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.sucesso, p[style*="color:green"] {
+    background: var(--up-bg);
+    border: 1px solid rgba(34,197,94,0.2);
+    border-radius: var(--radius-sm);
+    color: var(--up) !important;
+    font-size: 0.825rem;
+    padding: 0.65rem 1rem;
+    margin-bottom: 1rem;
+}
+
+/* ── Chart ──────────────────────────────────────────── */
+canvas {
+    background: var(--surface);
+    border: 1px solid var(--border-2);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    max-height: 420px;
+    width: 100% !important;
+}
+
+/* ── Footer ─────────────────────────────────────────── */
+footer {
+    text-align: center;
+    padding: 1.1rem 0;
+    background: var(--surface);
+    border-top: 1px solid var(--border-2);
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    margin-top: auto;
+    letter-spacing: 0.02em;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 640px) {
+    header nav {
+        height: auto;
+        padding: 0.6rem 1rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    header nav .menu { padding: 0; }
+    header nav .menu li a { font-size: 0.75rem; padding: 0.3rem 0.5rem; }
+    main { margin: 1.5rem auto; padding: 0 1rem; }
+    form { padding: 1.5rem 1.25rem; }
+}
